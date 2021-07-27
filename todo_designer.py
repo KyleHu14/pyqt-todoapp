@@ -57,7 +57,6 @@ class Ui_MainWindow(object):
     def clear_list(self):
         self.myList_listWidget.clear()
 
-
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "To Do List"))
