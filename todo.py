@@ -1,5 +1,5 @@
 from PyQt6.QtGui import QFont
-from PyQt6 import QtCore, QtWidgets
+from PyQt6 import QtCore, QtWidgets, QtGui
 from PyQt6.QtWidgets import QApplication, QWidget, QPushButton, QGridLayout, QLabel, QWidget, QLineEdit, QPushButton, QListWidget
 import sys
 
@@ -18,6 +18,7 @@ class ToDoApp(QWidget):
         # Setting up the Window
         self.setWindowTitle(window_title)
         self.setGeometry(window_x, window_y, window_width, window_height)
+        self.setWindowIcon(QtGui.QIcon('images/check_mark.jpg'))
 
         # Setting up the UI
         window_layout = QGridLayout()
