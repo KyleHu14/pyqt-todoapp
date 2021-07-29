@@ -49,6 +49,8 @@ class ToDoApp(QWidget):
         # Task List is placed at (2,0), Takes up 1 row and 3 cols
         window_layout.addWidget(self.task_list, 2, 0, 1, 3)
 
+        self.update_existing_tasks()
+
         self.show()
     
     def add_task(self, new_task: str):
@@ -59,20 +61,61 @@ class ToDoApp(QWidget):
             self.task_list.addItem(new_task)
             self.task_field.setText('')
 
-        # Stores the new task in task_data.txt
-        with open('task_data.txt', 'a') as task_data:
-            task_data.write(new_task + '\n')
+            # Stores the new task in task_data.txt
+            self.file_append_value(new_task)
 
-    def del_task(self, selected_task: int):
+    def del_task(self, selected_task_row: int):
         '''Deletes a task from the task list, also deletes it from task_data.txt'''
-        self.task_list.takeItem(selected_task)
+
+        # Store name of the task to be deleted first
+        deleted_task_name = self.task_list.item(selected_task_row).text()
+
+        # Delete the task from task_data.txt
+        self.file_delete_value(deleted_task_name)
+
+        # Delete task from UI
+        self.task_list.takeItem(selected_task_row)
 
     def clear_list(self):
         '''Clears all tasks from task list, also deletes everything in task_data.txt'''
+
         self.task_list.clear()
 
-    def store_task(self, task_name: str):
-        pass
+        open('task_data.txt', 'w').close()
+
+    def update_existing_tasks(self):
+        '''Checks the task_data.txt file and updates the list widget with the tasks'''
+
+        file_lines = self.get_lines()
+        if len(file_lines) > 0:
+            for line in file_lines:
+                self.task_list.addItem(line.strip('\n'))
+
+    def file_delete_value(self, task_name : str):
+        '''Given a string, deletes the corresponding string in the task_data.txt file'''
+
+        file_lines = self.get_lines()
+        
+        with open('task_data.txt', 'w') as task_file:
+            for line in file_lines:
+                if line.strip('\n') != task_name:
+                    task_file.write(line)
+
+    def file_append_value(self, task_name : str):
+        '''Given a string, appends the string to task_data.txt file'''
+
+        with open('task_data.txt', 'a') as task_file:
+            task_file.write(task_name + '\n')
+
+    def get_lines(self) -> list:
+        '''Gets the lines within task_data.txt'''
+        with open ('task_data.txt', 'r') as task_file:
+            file_lines = task_file.readlines()
+        
+        return file_lines
+
+        
+    
 
 if __name__ == '__main__':
     application = QApplication([])
