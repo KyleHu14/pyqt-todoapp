@@ -14,7 +14,7 @@ class ToDoApp(QWidget):
 
         self.initUI(window_title, window_x, window_y, window_width, window_height)
 
-    def initUI(self, window_title, window_x, window_y, window_width, window_height):
+    def initUI(self, window_title: str, window_x: int, window_y: int, window_width: int, window_height: int):
         # Setting up the Window
         self.setWindowTitle(window_title)
         self.setGeometry(window_x, window_y, window_width, window_height)
@@ -50,13 +50,13 @@ class ToDoApp(QWidget):
 
         self.show()
     
-    def add_task(self, new_task):
+    def add_task(self, new_task: str):
         # Check that the new task isn't a blank field
         if new_task != '':
             self.task_list.addItem(new_task)
             self.task_field.setText('')
 
-    def del_task(self, selected_task):
+    def del_task(self, selected_task: int):
         self.task_list.takeItem(selected_task)
 
     def clear_list(self):
