@@ -1,0 +1,2 @@
+This txt file serves as a reference to where I got images used in this program.
+check_mark.jpg : https://www.iconspng.com/image/112621/checkmarkoncircle
