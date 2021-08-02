@@ -1,5 +1,6 @@
+from PyQt6 import QtGui
 from PyQt6.QtGui import QFont
-from PyQt6 import QtCore, QtWidgets, QtGui
+from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import QApplication, QWidget, QPushButton, QGridLayout, QLabel, QWidget, QLineEdit, QPushButton, QListWidget
 import sys
 
@@ -32,6 +33,17 @@ class ToDoApp(QWidget):
         # Create the Task List
         self.task_list = QListWidget()
 
+        # Create the Completed Task List
+        self.completed_task_list = QListWidget()
+
+        # Create the two labels for the two list widgets
+        self.task_list_label = QLabel()
+        self.completed_list_label = QLabel()
+        self.task_list_label.setText('Unfinished Tasks')
+        self.completed_list_label.setText('Completed Tasks')
+        self.task_list_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.completed_list_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
         # Create Three Buttons (Add Task | Delete Selected Task | Clear Task List)
         add_task_button = QPushButton('Add a Task', clicked = lambda: self.add_task(self.task_field.text()))
         del_task_button = QPushButton('Delete Task', clicked = lambda: self.del_task(self.task_list.currentRow()))
@@ -46,8 +58,19 @@ class ToDoApp(QWidget):
         window_layout.addWidget(del_task_button, 1, 1)
         window_layout.addWidget(clear_list_button, 1, 2)
 
-        # Task List is placed at (2,0), Takes up 1 row and 3 cols
-        window_layout.addWidget(self.task_list, 2, 0, 1, 3)
+        # Two labels for lists are placed in row 2
+        window_layout.addWidget(self.task_list_label, 2, 0, 1, 2)
+        window_layout.addWidget(self.completed_list_label, 2, 2, 1, 1)
+
+        # Task List is placed at (3,0), Takes up 1 row and 2 cols
+        window_layout.addWidget(self.task_list, 3, 0, 1, 2)
+
+        # Completed Task List is placed at (3,2), Takes up 1 row and 1 col
+        window_layout.addWidget(self.completed_task_list, 3, 2, 1, 1)
+
+        window_layout.setColumnStretch(0,1)
+        window_layout.setColumnStretch(1,1)
+        window_layout.setColumnStretch(2,1)
 
         self.update_existing_tasks()
 
@@ -69,6 +92,9 @@ class ToDoApp(QWidget):
 
         # Store name of the task to be deleted first
         deleted_task_name = self.task_list.item(selected_task_row).text()
+
+        # Add the name of the task to the completed tasks list
+        self.completed_task_list.addItem(deleted_task_name)
 
         # Delete the task from task_data.txt
         self.file_delete_value(deleted_task_name)
@@ -113,9 +139,6 @@ class ToDoApp(QWidget):
             file_lines = task_file.readlines()
         
         return file_lines
-
-        
-    
 
 if __name__ == '__main__':
     application = QApplication([])
