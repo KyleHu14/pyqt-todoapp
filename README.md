@@ -1,7 +1,7 @@
 # ToDoList
  
 I followed a tutorial from a channel called Codemy to create the todo_designer.py of this project. All credits go to Codemy.<br> 
-I made my own version of the todolist from scratch.<br>
+I made my own version of the todolist from scratch as well and added it into this repository.<br>
 The todo.py is my version whereas the todo designer.py is the tutorial version<br><br>
 
 
