@@ -1,10 +1,10 @@
 # pyqt-todoapp
 
 ## Overview
-This repository was made with the help of a tutorial. I followed the tutorial and created this repository.
-I created an application from scratch as well.
-todo.py (My Version)
-designer.py (Code From Tutorial)
+This repository was made with the help of a tutorial. I followed the tutorial and created this repository.<br>
+I created an application from scratch as well.<br>
+todo.py (My Version)<br>
+designer.py (Code From Tutorial)<br>
 
 Link to Tutorial : https://www.youtube.com/watch?v=EFKI9bu4lrY&t=187s
 
