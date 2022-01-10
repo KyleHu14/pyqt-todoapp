@@ -1,9 +1,13 @@
-# ToDoList
- 
-I followed a tutorial from a channel called Codemy to create the todo_designer.py of this project. All credits go to Codemy.<br> 
-I made my own version of the todolist from scratch as well and added it into this repository.<br>
-The todo.py is my version whereas the todo designer.py is the tutorial version<br><br>
+# pyqt-todoapp
 
+## Overview
+This repository was made with the help of a tutorial. I followed the tutorial and created this repository.
+I created an application from scratch as well.
+todo.py (My Version)
+designer.py (Code From Tutorial)
 
-Tutorial (Using the Designer): https://www.youtube.com/watch?v=EFKI9bu4lrY&t=187s<br>
-Codemy Channel : https://www.youtube.com/channel/UCFB0dxMudkws1q8w5NJEAmw
+Link to Tutorial : https://www.youtube.com/watch?v=EFKI9bu4lrY&t=187s
+
+## Languages / Frameworks / Libraries Used In this Project
+1. PyQt
+2. Python
